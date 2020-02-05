@@ -37,13 +37,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def destory
+  def destroy
     @article = Article.find(params[:id])
-    @post.destroy
+    @article.destroy 
+    redirect_to home_path
 
-    redirect_to articles_path
-  
-  end
+end
 
   private
   def article_params
