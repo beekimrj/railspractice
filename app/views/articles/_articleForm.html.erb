@@ -1,0 +1,21 @@
+<%= form_for :article, url:articleURL, method: formMethod  do |f| %>
+    <% @article.errors.any? %>
+    <% @article.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%= msg %> </div>
+        <% end %>
+    <p>
+
+        <%= f.label :title %> <br>
+        <%= f.text_field(:title, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+    <%= f.label :body %> <br>
+    <%= f.text_area(:body, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+    <%= f.submit({:class => 'btn btn-primary'}) %>
+    <%= link_to "Cancel", home_path, :class => "btn btn-danger" %>
+    </p>
+    <% end %>
