@@ -1,2 +1,10 @@
-<h1>Hotels#show</h1>
-<p>Find me in app/views/hotels/show.html.erb</p>
+<%= link_to "Go Back", hotels_path, :class => "btn btn-primary  " %>
+<% flash.each do |key, value| %>
+       <font color = "green"> <div class="<%= key %>"><%= value %></div> </font>
+<% end %>
+<h1> <%= @hotel.name %> </h1>
+<p>Location: <%= @hotel.location %> </p>
+<p>price: <%= @hotel.price %> </p>
+<p>check in: <%= @hotel.check_in_date %> </p>
+<p>check out: <%= @hotel.check_out_date %> </p>
+<%= link_to "Edit", edit_hotel_path(@hotel), :class => "btn btn-secondary  " %>

@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root to: "articles#index", as: 'home'
-  get 'hotels/index'
-  get 'hotels/show'
-  get 'hotels/edit'
-  get 'hotels/new'
-  get 'hotels/destroy'
+  resources :hotels
   get 'paragraphs/create'
   get 'paragraphs/destroy'
   resources :articles

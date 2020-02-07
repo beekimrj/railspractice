@@ -1,2 +1,15 @@
-<h1>Hotels#index</h1>
-<p>Find me in app/views/hotels/index.html.erb</p>
+<% if @hotels.present? %>
+<%=link_to "Add new Hotel", new_hotel_path, :class => "btn btn-primary" %>
+    <% @hotels.each do |hotel|%>
+    <p>
+    <div  class="well" >
+       <%=link_to "#{hotel.name}", hotel_path(hotel)%> <br> 
+        <%= link_to "Show", hotel_path(hotel), :class => "btn btn-primary"%>
+      <%= link_to "Delete", hotel_path(hotel),method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger"%>
+    </div>
+    </p>
+    <% end %>
+<% else %>
+<br>
+<h4> Oops, There is no any hotels to display, <%=link_to "Click Here", new_hotel_path %>  To Create Hotel</h4>
+<% end %>

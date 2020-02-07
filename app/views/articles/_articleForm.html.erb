@@ -16,6 +16,6 @@
 
     <p>
     <%= f.submit({:class => 'btn btn-primary'}) %>
-    <%= link_to "Cancel", home_path, :class => "btn btn-danger" %>
+    <%= link_to "Cancel", (@article.new_record? ? articles_path : article_path(@article)), :class => "btn btn-danger" %>
     </p>
     <% end %>

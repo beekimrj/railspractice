@@ -4,7 +4,7 @@ class CreateHotels < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :location
       t.decimal :price
-      t.date :check_in_data
+      t.date :check_in_date
       t.date :check_out_date
 
       t.timestamps

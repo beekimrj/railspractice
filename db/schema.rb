@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_02_05_040746) do
     t.string "name"
     t.string "location"
     t.decimal "price", precision: 10
-    t.date "check_in_data"
+    t.date "check_in_date"
     t.date "check_out_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,0 +1,38 @@
+<%= form_for :hotel, url:hotelURL, method: formMethod  do |f| %>
+    <% @hotel.errors.any? %>
+    <% @hotel.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%= msg %> </div>
+        <% end %>
+   <p>
+    <%= f.label :name %> <br>
+    <%= f.text_field(:name, {:class => 'form-control'}) %>
+    </p>
+
+
+    <p>
+    <%= f.label :location %> <br>
+    <%= f.text_field(:location, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+    <%= f.label :price %> <br>
+    <%= f.number_field :price, step: :any, :class => 'form-control' %>
+    <%# f.number_field :amount, step: :any %>
+    </p>
+
+    <p>
+    <%= f.label "You will be checking in" %> <br>
+     <%= f.date_select :check_in_date %>
+    </p>
+
+    <p>
+    <%= f.label :check_out_date %> <br>
+    <%= f.date_select :check_out_date %>
+    </p>
+
+    <p>
+    <%= f.submit({:class => 'btn btn-primary'}) %>
+    <%= link_to "Cancel", (@hotel.new_record? ? hotels_path : hotel_path(@hotel)), :class => "btn btn-danger" %>
+    </p>
+    <% end %>
+ 
