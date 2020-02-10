@@ -1,0 +1,31 @@
+
+<%= form_for :paragraph, url:paragraphURL, method: formMethod  do |f| %>
+    <% @paragraph.errors.any? %>
+    <% @paragraph.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%= msg %> </div>
+        <% end %>
+    <p>
+
+        <%= f.label :title %> <br>
+        <%= f.text_field(:title, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+    <%= f.label :body %> <br>
+    <%= f.text_area(:body, {:class => 'form-control'}) %>
+    </p>
+
+   <p>
+    <%= f.label :article_id %> <br>
+    <%= f.number_field(:article_id, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+
+    <%= f.collection_select(:hotel_id, Hotel.all, :id, :name)%>
+    <p>
+    <%= f.submit({:class => 'btn btn-primary'}) %>
+    <%= link_to "Cancel", paragraphs_path, :class => "btn btn-danger" %>
+
+    </p>
+    <% end %>

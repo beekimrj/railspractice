@@ -1,0 +1,12 @@
+<%= link_to "Create paragraph", new_paragraph_path, :class => "btn btn-primary  " %>
+<% flash.each do |key, value| %>
+       <font color = "green"> <div class="<%= key %>"><%= value %></div> </font>
+<% end %>
+<% @paragraphs.each do |paragraph|%>
+<h1> <%= paragraph.title %> </h1>
+<p><%= paragraph.body %> </p>
+<p>Article id: <%= paragraph.article_id %> </p>
+<p>Hotel id: <%= paragraph.hotel_id%> </p>
+<p>Hotel Name: <%= paragraph.hotel.name%> </p>
+<%= link_to "Edit", edit_paragraph_path(paragraph), :class => "btn btn-secondary  " %>
+<% end %>
