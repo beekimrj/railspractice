@@ -9,4 +9,5 @@
 <p>Hotel id: <%= paragraph.hotel_id%> </p>
 <p>Hotel Name: <%= paragraph.hotel.name%> </p>
 <%= link_to "Edit", edit_paragraph_path(paragraph), :class => "btn btn-secondary  " %>
+<%= link_to "Delete", paragraph_path(paragraph),method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger"%>
 <% end %>

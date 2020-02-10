@@ -24,11 +24,10 @@ class ParagraphsController < ApplicationController
   end
 
   def destroy
-      @article = Article.find(params[:article_id])
-      @paragraph = @article.paragraph.find(params[:id])
-      @paragraph.destroy
-      redirect_to article_path(@article)
-  end
+    @paragraph = Paragraph.find(params[:id])
+    @paragraph.destroy 
+    redirect_to paragraphs_path
+end
 
   def edit
     @paragraph = Paragraph.find(params[:id])
