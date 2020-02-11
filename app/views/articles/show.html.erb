@@ -1,4 +1,13 @@
 <%= link_to "Go Back", home_path, :class => "btn btn-primary  " %>
 <h1> <%= @article.title %> </h1>
 <p> <%= @article.body %> </p>
+<% @article.paragraphs.each do |paragraph|%>
+<div>
+    <h1> <%= paragraph.title %> </h1>
+    <p><%= paragraph.body %> </p>
+    <p>Article id: <%= paragraph.article_id %> </p>
+    <p>Hotel id: <%= paragraph.hotel_id%> </p>
+    <p>Hotel Name: <%= paragraph.hotel.name%> </p>
+</div>
+<% end %>
 <%= link_to "Edit", edit_article_path(@article), :class => "btn btn-secondary  " %>

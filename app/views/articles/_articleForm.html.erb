@@ -1,21 +1,38 @@
-<%= form_for :article, url:articleURL, method: formMethod  do |f| %>
+<%= form_for :article, url:articleURL, method: formMethod  do |article_form| %>
     <% @article.errors.any? %>
-    <% @article.errors.full_messages.each do |msg| %>
-        <div class="alert alert-danger"><%= msg %> </div>
+        <% @article.errors.full_messages.each do |msg| %>
+            <div class="alert alert-danger"><%= msg %> </div>
+        <% end %>
+
+    <p>
+        <%= article_form.label :title %> <br>
+        <%= article_form.text_field(:title, {:class => 'form-control'}) %>
+    </p>
+
+    <p>
+        <%= article_form.label :body %> <br>
+        <%= article_form.text_area(:body, {:class => 'form-control'}) %>
+    </p>
+    <h3> Paragraphs </h3>
+    <pre>
+    <%= @article.paragraphs.to_json %>
+    </pre>
+    <%= article_form.fields_for :paragraphs do |paragraph_form| %>
+         <p>
+            <%= paragraph_form.label :title %> <br>
+            <%= paragraph_form.text_field(:title, {:class => 'form-control'}) %>
+        </p>
+        <p>
+            <%= paragraph_form.label :body %> <br>
+            <%= paragraph_form.text_area(:body, {:class => 'form-control'}) %>
+        </p>
+
+        <p>
+            <%= paragraph_form.collection_select(:hotel_id, Hotel.all, :id, :name)%>
+        </p>
         <% end %>
     <p>
-
-        <%= f.label :title %> <br>
-        <%= f.text_field(:title, {:class => 'form-control'}) %>
+        <%= article_form.submit({:class => 'btn btn-primary'}) %>
+        <%= link_to "Cancel", (@article.new_record? ? articles_path : article_path(@article)), :class => "btn btn-danger" %>
     </p>
-
-    <p>
-    <%= f.label :body %> <br>
-    <%= f.text_area(:body, {:class => 'form-control'}) %>
-    </p>
-
-    <p>
-    <%= f.submit({:class => 'btn btn-primary'}) %>
-    <%= link_to "Cancel", (@article.new_record? ? articles_path : article_path(@article)), :class => "btn btn-danger" %>
-    </p>
-    <% end %>
+<% end %>

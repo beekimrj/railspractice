@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @article.paragraphs.build
   end
 
   def create
@@ -22,6 +23,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def update
     @article = Article.find(params[:id])
     
@@ -33,9 +38,6 @@ class ArticlesController < ApplicationController
 
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
 
   def destroy
     @article = Article.find(params[:id])
@@ -46,6 +48,6 @@ end
 
   private
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:id, :title, :body, paragraphs_attributes: [:title, :body,:article_id, :hotel_id])
   end
 end

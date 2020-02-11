@@ -1,30 +1,30 @@
 
-<%= form_for :paragraph, url:paragraphURL, method: formMethod  do |f| %>
+<%= form_for :paragraph, url:paragraphURL, method: formMethod  do |paragraph_form| %>
     <% @paragraph.errors.any? %>
     <% @paragraph.errors.full_messages.each do |msg| %>
         <div class="alert alert-danger"><%= msg %> </div>
         <% end %>
     <p>
 
-        <%= f.label :title %> <br>
-        <%= f.text_field(:title, {:class => 'form-control'}) %>
+        <%= paragraph_form.label :title %> <br>
+        <%= paragraph_form.text_field(:title, {:class => 'form-control'}) %>
     </p>
 
     <p>
-    <%= f.label :body %> <br>
-    <%= f.text_area(:body, {:class => 'form-control'}) %>
+    <%= paragraph_form.label :body %> <br>
+    <%= paragraph_form.text_area(:body, {:class => 'form-control'}) %>
     </p>
 
    <p>
-    <%= f.label :article_id %> <br>
-    <%= f.number_field(:article_id, {:class => 'form-control'}) %>
+    <%= paragraph_form.label :article_id %> <br>
+    <%= paragraph_form.number_field(:article_id, {:class => 'form-control'}) %>
     </p>
 
     <p>
 
-    <%= f.collection_select(:hotel_id, Hotel.all, :id, :name)%>
+    <%= paragraph_form.collection_select(:hotel_id, Hotel.all, :id, :name)%>
     <p>
-    <%= f.submit({:class => 'btn btn-primary'}) %>
+    <%= paragraph_form.submit({:class => 'btn btn-primary'}) %>
     <%= link_to "Cancel", paragraphs_path, :class => "btn btn-danger" %>
 
     </p>
